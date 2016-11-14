@@ -21,11 +21,22 @@ export class FormPoster {
             .catch(this.handleError);
     }
 
+    getLanguages(errHandler: Function): Observable<any> {
+        return this.http.get(this.url)
+            .delay(1000)
+            .map(this.extractData)
+            .catch((error) => {
+                errHandler(error);
+                return Observable.throw(error.status + ": " + error.statusText);
+            });
+    }
+
     private extractData(res: Response) {
         let body;
         if (res.text()) {
             body = res.json();
         }
+        console.log('extract data: ', body);
         return body || {};
     }
 

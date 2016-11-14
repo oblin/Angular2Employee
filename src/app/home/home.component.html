@@ -48,7 +48,7 @@
         #primaryLanguageModel="ngModel" #primaryLanguage
         (blur)="validatePrimaryLanguage(primaryLanguage.value)"
         (change)="validatePrimaryLanguage(primaryLanguageModel)">
-            <option *ngFor="let lang of languages" [value]="lang.id">{{ lang.name }}</option>
+            <option *ngFor="let lang of languages | async" [value]="lang.id">{{ lang.name }}</option>
         </select>
       <div class="alert alert-danger" [hidden]="!hasPrimaryLanguageError">
         Primary Language is required.

@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Employee } from '../models/employee.model';
 import { FormPoster } from '../services/form-poster.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'home',
@@ -12,16 +13,15 @@ import { FormPoster } from '../services/form-poster.service';
 })
 export class HomeComponent {
   // languages = ['Select a Language...', 'English', 'Spanish', 'Other'];
-  private languages = [
-    { id: '', name: 'Select a Language...' },
-    { id: '1', name: 'English' },
-    { id: '2', name: 'Spanish' },
-    { id: '3', name: 'Other' }
-  ];
   private model = new Employee('Darla', 'Smith', true, '1099', null);
   private hasPrimaryLanguageError = false;
 
-  constructor(private formPoster: FormPoster) { }
+  private languages: Observable<any[]>;
+  constructor(private formPoster: FormPoster) {
+    this.languages = this.formPoster.getLanguages(function(err: any) {
+      console.error('get result error: ', err);
+    });
+  }
 
   firtNameToUpperCase(value: string) {
     if (value.length > 0)
