@@ -1,3 +1,4 @@
+<p-growl [value]="msgs"></p-growl>
 <h3>Angular 2 Forms</h3>
 <div class="container">
   <form>
@@ -8,32 +9,31 @@
       <timepicker name="startTime" [(ngModel)]="startTime" [minuteStep]="15" [meridians]="['上午', '下午']"></timepicker>
     </div>
     <div class="form-group">
-      <button type="button" class="btn" name="onOffSwitch" [(ngModel)]="onOffSwitch" 
-        [class.btn-primary]="onOffSwitch === 'on'"
+      <button type="button" class="btn" name="onOffSwitch" [(ngModel)]="onOffSwitch" [class.btn-primary]="onOffSwitch === 'on'"
         btnCheckbox btnCheckboxTrue="on" btnCheckboxFalse="off">
         {{ onOffSwitch }}
       </button>
     </div>
     <div class="form-group">
-      <rating name="postRating" [(ngModel)]="postRating" 
-        [max]="10" [stateOn]="'glyphicon-check'" [stateOff]="'glyphicon-unchecked'"
-        (onHover)="hover($event)" (onLeave)="leave($event)"
-        ></rating>
+      <rating name="postRating" [(ngModel)]="postRating" [max]="10" [stateOn]="'glyphicon-check'" [stateOff]="'glyphicon-unchecked'"
+        (onHover)="hover($event)" (onLeave)="leave($event)"></rating>
     </div>
-      {{ postRating }}
+    {{ postRating }}
     <div class="btn-group">
-      <label class="btn btn-default" name="taxType"
-        [(ngModel)]="taxType" btnRadio="W2" [class.btn-primary]="taxType === 'W2'">
+      <label class="btn btn-default" name="taxType" [(ngModel)]="taxType" btnRadio="W2" [class.btn-primary]="taxType === 'W2'">
         W2
       </label>
-      <label class="btn btn-default" name="taxType"
-        [(ngModel)]="taxType" btnRadio="1099" [class.btn-primary]="taxType === '1099'">
+      <label class="btn btn-default" name="taxType" [(ngModel)]="taxType" btnRadio="1099" [class.btn-primary]="taxType === '1099'">
         1099
       </label>
-      <label class="btn btn-default" name="taxType"
-        [(ngModel)]="taxType" btnRadio="Other" [class.btn-primary]="taxType === 'Other'">
+      <label class="btn btn-default" name="taxType" [(ngModel)]="taxType" btnRadio="Other" [class.btn-primary]="taxType === 'Other'">
         Other
       </label>
     </div>
   </form>
+  
+  <p-dataTable [value]="languages">
+    <p-column field="id" header="Id"></p-column>
+    <p-column field="name" header="Name"></p-column>
+  </p-dataTable>
 </div>

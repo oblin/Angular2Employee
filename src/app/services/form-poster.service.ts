@@ -21,14 +21,10 @@ export class FormPoster {
             .catch(this.handleError);
     }
 
-    getLanguages(errHandler: Function): Observable<any> {
+    getLanguages(): Observable<any> {
         return this.http.get(this.url)
-            .delay(1000)
             .map(this.extractData)
-            .catch((error) => {
-                errHandler(error);
-                return Observable.throw(error.status + ": " + error.statusText);
-            });
+            .catch(this.handleError);
     }
 
     private extractData(res: Response) {
